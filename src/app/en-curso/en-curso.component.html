@@ -1,0 +1,10 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>En Curso</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p *ngIf="currentActivity">Estás inscrito en: {{currentActivity.nombre}} el {{currentActivity.dia}} a las
+            {{currentActivity.hora}}</p>
+        <p *ngIf="!currentActivity">No estás inscrito en ninguna actividad.</p>
+    </mat-card-content>
+</mat-card>

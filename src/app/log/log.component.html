@@ -1,0 +1,95 @@
+<div class="login-container">
+  <div class="login-form">
+    <h1>{{ isLoginMode() ? 'LOGIN' : 'REGISTRO' }}</h1>
+
+    <ng-container *ngIf="isLoginMode()">
+      <mat-form-field>
+        <mat-icon class="icon">email</mat-icon>
+        <mat-label>Ingresa tu Email</mat-label>
+        <input matInput [formControl]="email" required />
+        <mat-error *ngIf="email.invalid">{{ errorEmail() }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-icon class="icon">lock</mat-icon>
+        <mat-label>Ingresa tu Contraseña</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" [formControl]="password" required />
+        <button mat-icon-button matSuffix (click)="togglePasswordVisibility()"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+          <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">{{ errorPassword() }}</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="login()">Login</button>
+      <button mat-raised-button color="accent" (click)="toggleMode()">
+        {{ isLoginMode() ? 'Registrar Alumno' : 'Volver a Login' }}
+      </button>
+    </ng-container>
+
+
+
+    
+    <ng-container *ngIf="!isLoginMode()">
+      <mat-card>
+        <!-- <mat-card-header>
+          <mat-card-title>Registro de Alumno</mat-card-title>
+        </mat-card-header> -->
+
+        <mat-card-content>
+        <mat-form-field>
+          <mat-icon class="icon">key</mat-icon>
+          <mat-label>Ingresa tu numero de control</mat-label>
+          <input matInput [formControl]="control"  [(ngModel)]="alumno.numeroControl" required />
+          <mat-error *ngIf="control.invalid">{{ errorNumeroControl() }}</mat-error>
+        </mat-form-field>
+
+          <mat-form-field>
+            <mat-icon class="icon">person</mat-icon>
+            <mat-label>Ingresa tu Nombre</mat-label>
+            <input matInput [formControl]="name"  [(ngModel)]="alumno.nombres" required />
+            <mat-error *ngIf="name.invalid">{{ errorName() }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-icon class="icon">person</mat-icon>
+            <mat-label>Ingresa tu apellido Paterno</mat-label>
+            <input matInput [formControl]="paterno"  [(ngModel)]="alumno.apellidoP" required />
+            <mat-error *ngIf="paterno.invalid">{{ errorApellidoP() }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-icon class="icon">person</mat-icon>
+            <mat-label>Ingresa tu apellido Materno</mat-label>
+            <input matInput [formControl]="materno"  [(ngModel)]="alumno.apellidoM" required />
+            <mat-error *ngIf="materno.invalid">{{ errorApellidoM() }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-icon class="icon">email</mat-icon>
+            <mat-label>Ingresa tu Email</mat-label>
+            <input matInput [formControl]="email"  [(ngModel)]="alumno.correo" required />
+            <mat-error *ngIf="email.invalid">{{ errorEmail() }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-icon class="icon">lock</mat-icon>
+            <mat-label>Ingresa tu Contraseña</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" [formControl]="password"  [(ngModel)]="alumno.contrasena" required />
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+              <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="password.invalid">{{ errorPassword() }}</mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="register()">Registrar</button>
+          <button mat-raised-button color="accent" (click)="toggleMode()">
+            {{ isLoginMode() ? 'Registrar Alumno' : 'Volver a Login' }}
+            
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>

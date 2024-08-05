@@ -1,0 +1,105 @@
+/* Estilos para el contenedor del login */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #2203365d;
+}
+
+/* Estilos para el formulario del login */
+.login-form {
+  width: 100%;
+  max-width: 450px;
+  background-color: #17012d;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center; /* Centra el contenido dentro del formulario */
+}
+
+/* Estilo para el título */
+.login-form h1 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Estilos para el campo de formulario */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Estilos para el icono dentro del campo de formulario */
+mat-icon.icon {
+  color: #555;
+}
+
+/* Estilo para los botones */
+button.mat-raised-button {
+  width: 100%;
+  margin-top: 12px;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border: none; /* Asegura que no haya bordes predeterminados */
+}
+
+/* Estilos para el botón de login */
+button.mat-raised-button[color="primary"] {
+  background-color: #060709;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+button.mat-raised-button[color="primary"]:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+  transform: scale(1.05); /* Efecto de aumento al pasar el ratón */
+}
+
+/* Estilos para el botón de registro */
+button.mat-raised-button[color="accent"] {
+  background-color: #28a745;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+button.mat-raised-button[color="accent"]:hover {
+  background-color: #218838;
+  box-shadow: 0 6px 12px rgba(40, 167, 69, 0.4);
+  transform: scale(1.05); /* Efecto de aumento al pasar el ratón */
+}
+
+/* Estilo para el mat-card de registro*/
+mat-card {
+  background-color: #0b4e71;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+/* Estilo para el encabezado del card */
+mat-card-header {
+  background-color: #542389;
+  border-bottom: 1px solid #8d109d;
+  padding-bottom: 8px;
+}
+
+/* Estilo para el título del card */
+mat-card-title {
+  color: #090c66;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Estilo para los errores de formulario */
+mat-error {
+  color: #f44336;
+}
+

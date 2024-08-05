@@ -1,0 +1,118 @@
+<div class="menu-wrapper">
+    <aside class="menu-sidebar">
+      <div class="menu-header">
+        <h1>Menú</h1>
+      </div>
+      <button mat-raised-button color="primary" class="menu-button" (click)="mostrarDatosAlumno()">Mostrar Datos</button>
+      <button mat-raised-button color="accent" class="menu-button" (click)="mostrarActividades()">Actividades</button>
+
+      <button mat-raised-button color="accent" class="menu-button" (click)="mostrarMiActividad()">Mis Actividades</button>
+
+      <button mat-icon-button color="warn" (click)="cerrarSesion()">
+      
+        <mat-icon>logout</mat-icon>
+      </button>
+    </aside>
+
+    <main class="menu-content">
+      <mat-card *ngIf="mostrarDatos" class="data-card">
+        <mat-card-content>
+          <form>
+            <mat-form-field appearance="fill">
+              <mat-label>Id</mat-label>
+              <input matInput placeholder="Id" [(ngModel)]="alumno.id" name="id">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Numero de control</mat-label>
+              <input matInput placeholder="NumControl" [(ngModel)]="alumno.numeroControl" name="numControl">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input matInput placeholder="Nombre" [(ngModel)]="alumno.nombres" name="nombre">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Apellido</mat-label>
+              <input matInput placeholder="ApellidoP" [(ngModel)]="alumno.apellidoP" name="apellido">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="ApellidoM" [(ngModel)]="alumno.correo" name="correo">
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill">
+              <mat-label>Contraseña</mat-label>
+              <input matInput placeholder="Contraseña" [(ngModel)]="alumno.contrasena" name="contrasena">
+            </mat-form-field> 
+            
+            <button mat-raised-button color="primary" class="update-button" (click)="actualizarAlumno()">Actualizar</button>
+            <button mat-raised-button color="primary" class="update-button" (click)="eliminarAlumno()">Eliminar</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+
+      
+      <mat-card *ngIf="mostrarActividad" class="activities-card">
+        <mat-card-header>
+          <mat-card-title>Actividades</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <table mat-table [dataSource]="activities" class="mat-elevation-z8">
+            
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef>ID</th>
+              <td mat-cell *matCellDef="let activity">{{activity.id}}</td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef>Nombre</th>
+              <td mat-cell *matCellDef="let activity">{{activity.nombre}}</td>
+            </ng-container>
+      
+            <ng-container matColumnDef="dia">
+              <th mat-header-cell *matHeaderCellDef>Día</th>
+              <td mat-cell *matCellDef="let activity">{{activity.dia}}</td>
+            </ng-container>
+      
+            <ng-container matColumnDef="hora">
+              <th mat-header-cell *matHeaderCellDef>Hora</th>
+              <td mat-cell *matCellDef="let activity">{{activity.hora}}</td>
+            </ng-container>
+      
+            <ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef>Acciones</th>
+              <td mat-cell *matCellDef="let activity">
+                <button mat-raised-button color="primary" (click)="inscribe(alumno.numeroControl,activity.id)">Inscribirse</button>
+              </td>
+            </ng-container>
+      
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+      
+
+
+
+      <mat-card *ngIf="mostrarMisActividades" class="my-activities-card">
+        <mat-card-header>
+          <mat-card-title>Mis Actividades</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngIf="actividadInscrita">
+            <p><strong>ID:</strong> {{actividadInscrita.id}}</p>
+            <p><strong>Nombre:</strong> {{actividadInscrita.nombre}}</p>
+            <p><strong>Día:</strong> {{actividadInscrita.dia}}</p>
+            <p><strong>Hora:</strong> {{actividadInscrita.hora}}</p>
+            <button mat-raised-button color="warn" (click)="darDeBaja()">Dar de Baja</button>
+          </div>
+          <div *ngIf="!actividadInscrita">
+            <p>No estás inscrito en ninguna actividad.</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+    </main>
+  </div>
